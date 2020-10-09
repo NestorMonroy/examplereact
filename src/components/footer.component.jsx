@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-
+import {CtxConsumer} from '../index'
 class Footer extends Component {
 
     state = {
-        name: 'Nestor',
+        name: '',
         age:29,
         isLogin: true
     }
@@ -29,27 +29,20 @@ class Footer extends Component {
 
     render() {
 
-        const animals = ['']
         return (
-            <div>
-                {
-                  this.state.isLogin ? (
-                  <React.Fragment>
-                        <h2 onClick={this.props.myAlert}>
-                            {this.props.adminmessage}
-                        </h2>
-                        <input
-                            value= {this.state.name}
-                            type="text"
-                            onChange={this.change.bind(this)}
-                        />
-                  </React.Fragment>
-                ): (
-                    <React.Fragment>
-                        <h2>no</h2>
-                    </React.Fragment>
+            <CtxConsumer>
+                {(context) => (
+                    <div>
+                        {context.animals.map( animal => {
+                            return (
+                                <div key={animal}>
+                                    <h1> {animal} </h1>  
+                                </div>
+                            )
+                         })}
+                    </div>
                 )}
-            </div>
+            </CtxConsumer>        
         )
     }
 }
