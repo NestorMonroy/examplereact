@@ -1,26 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/header.component';
+import Footer from './components/footer.component';
+
+function createAlert(){
+  alert('hello. you clicked me')
+}
+
+function ShowMessage(props){
+  if(props.toShow){
+    return <h2>Message 1 </h2>
+  }else
+    return <h2>Forbidden </h2>
+  
+}
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const userlogin = true;
+
+  if(userlogin){
+    return (
+      <div className="App">
+        <Header info=" this my info" myNumber="6" />
+        <Header info=" this otro"/>
+  
+        <h2>main</h2>
+        <Footer  
+          adminmessage="page nestor" 
+          myAlert = {createAlert}
+        />
+      </div>
+    );
+  }
+  else
+  return <h2>Forbidden </h2>
+
 }
 
 export default App;
